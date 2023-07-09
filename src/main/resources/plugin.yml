@@ -1,0 +1,6 @@
+name: SuggestionsBox
+version: '${project.version}'
+main: eextr0.suggestionsbox.SuggestionsBox
+api-version: '1.19'
+authors: [eextr0]
+website: https://github.com/eextr0
