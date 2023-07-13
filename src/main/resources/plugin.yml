@@ -1,6 +1,24 @@
 name: SuggestionsBox
-version: '${project.version}'
+version: '1.0'
 main: eextr0.suggestionsbox.SuggestionsBox
 api-version: '1.19'
 authors: [eextr0]
 website: https://github.com/eextr0
+
+permissions:
+  suggestions.commands.*:
+    default: op
+    description: Permission to use all Suggestions Box commands
+    children:
+      - suggestions.create
+  suggestions.commands:
+    default: op
+    description: Permission to use Suggestions Box commands
+  suggestions.create:
+    default: op
+    description: Permission to use the /suggestion create command to create a new suggestion.
+
+commands:
+  suggestion:
+    permissions: suggestions.commands
+    description: run Suggestion Box commands

@@ -1,0 +1,15 @@
+messages:
+  error:
+    unknownCommand: "&cUnknown command."
+    noPermission: "&cYou do not have permission to use that command"
+    draftSaveInvalidResponse: "&cInvalid response. Please type 'yes' or 'no'."
+
+  commands:
+    suggestionCreateTitle: "Type the title of your suggestion in chat. Right Click to cancel."
+    suggestionCreateBody: "Type your suggestion into chat. Right Click to cancel."
+
+  inputResponse:
+    askSaveDraft: "Do you want to save this as a draft? Type 'yes' or 'no' in chat."
+    draftSaved: "Your draft has been saved."
+    draftNotSaved: "Your draft has not been saved."
+    draftSaveNoResponse: "Draft submission canceled due to no response."
