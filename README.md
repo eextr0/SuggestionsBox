@@ -1,5 +1,6 @@
 # SuggestionsBox
 Interactive Suggestions plugin that uses a GUI for players to view and vote on other player's suggestions
+
 Changelog:
 - added SQL DB for storing suggestions
 - added listeners for approving submissions
