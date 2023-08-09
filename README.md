@@ -9,9 +9,9 @@ Changelog:
 - added GUI register
 
 Current issues:
-approvalListener was working but broke without reason, currently debugging
+- approvalListener was working but broke without reason, currently debugging
 
 
 Planned changes:
-VoteListener to be with new SQL values that get added to the titles of Approved suggestions
-Ability to sort approved suggestions by submission date or upvotes (default submission date)
+- VoteListener to be with new SQL values that get added to the titles of Approved suggestions
+- Ability to sort approved suggestions by submission date or upvotes (default submission date)
