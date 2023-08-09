@@ -36,15 +36,18 @@ public class PlayerInputData {
         }
     }
 
-    public void processInput(String input) {
+    public void processInput(String input, String tag) {
         if (suggestionData == null) {
-            suggestionData = new SuggestionData(plugin, input, null, player.getName());
+            suggestionData = new SuggestionData(plugin, input, null, player.getName(), tag);
             player.sendMessage("Suggestion title: " + input);
+            currentInputIndex++;
             } else {
             suggestionData.setBody(input);
             player.sendMessage("Your suggestion has been submitted for review.");
-            suggestionData.setTag("under review");
+            suggestionData.setTag(tag);
+            plugin.addToSuggestionList(suggestionData);
             resetInputData();
+            cancelInput();
         }
     }
 

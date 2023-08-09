@@ -1,6 +1,5 @@
 package eextr0.suggestionsbox.Listeners;
 
-import eextr0.suggestionsbox.Data.PlayerInputData;
 import eextr0.suggestionsbox.SuggestionsBox;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

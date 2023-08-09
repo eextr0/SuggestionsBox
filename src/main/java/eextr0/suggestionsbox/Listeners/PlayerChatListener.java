@@ -6,7 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class PlayerChatListener implements Listener {
 
@@ -23,10 +22,8 @@ public class PlayerChatListener implements Listener {
         if (playerInputData != null && playerInputData.isWaitingForInput()) {
             event.setCancelled(true);
 
-            playerInputData.processInput(event.getMessage());
+            playerInputData.processInput(event.getMessage(), "Under Review");
             if (playerInputData.isInputSessionComplete()) {
-                player.sendMessage("Input session complete.");
-
                 plugin.playerInputMap.remove(player.getUniqueId());
             } else {
                 playerInputData.promptNextInput();

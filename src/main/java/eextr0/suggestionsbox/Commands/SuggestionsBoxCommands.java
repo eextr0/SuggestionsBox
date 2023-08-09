@@ -1,12 +1,13 @@
 package eextr0.suggestionsbox.Commands;
 
-import eextr0.suggestionsbox.Config.MessagesConfigManager;
 import eextr0.suggestionsbox.Data.PlayerInputData;
+import eextr0.suggestionsbox.Data.SuggestionData;
 import eextr0.suggestionsbox.SuggestionsBox;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,44 @@ public class SuggestionsBoxCommands implements TabExecutor {
                     return true;
                 } else {
                     commandSender.sendMessage(noPermission);
+                }
+            }
+            case "review" -> {
+                if (commandSender instanceof Player p && p.hasPermission("suggestion.review")) {
+                    List<SuggestionData> suggestionList = plugin.getSuggestionList();
+                    ArrayList<ItemStack> itemList = new ArrayList<>();
+
+                    for (SuggestionData suggestion : suggestionList) {
+                        if (suggestion.getTag().equals("Under Review")) {
+                            ItemStack suggestionPaper = plugin.getPaperCreator().createPaper(
+                                    suggestion.getTitle(),
+                                    suggestion.getBody(),
+                                    suggestion.getAuthor());
+                            itemList.add(suggestionPaper);
+                        }
+                    }
+
+                    plugin.createGUI().openUI(p, "Suggestions Review", itemList, 1);
+                    return true;
+                }
+            }
+            case "view" -> {
+                if (commandSender instanceof Player p && p.hasPermission("suggestion.view")) {
+                    List<SuggestionData> suggestionList = plugin.getSuggestionList();
+                    ArrayList<ItemStack> itemList = new ArrayList<>();
+
+                    for (SuggestionData suggestion : suggestionList) {
+                        if (suggestion.getTag().equals("Approved")) {
+                            ItemStack suggestionPaper = plugin.getPaperCreator().createPaper(
+                                    suggestion.getTitle(),
+                                    suggestion.getBody(),
+                                    suggestion.getAuthor());
+                            itemList.add(suggestionPaper);
+                        }
+                    }
+
+                    plugin.createGUI().openUI(p, "Player Suggestions", itemList, 1);
+                    return true;
                 }
             }
 

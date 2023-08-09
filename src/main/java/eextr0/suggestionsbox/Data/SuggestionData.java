@@ -2,12 +2,6 @@ package eextr0.suggestionsbox.Data;
 
 import eextr0.suggestionsbox.SuggestionsBox;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class SuggestionData {
 
     private final SuggestionsBox plugin;
@@ -16,11 +10,11 @@ public class SuggestionData {
     private String tag;
     private final String author;
 
-    public SuggestionData(SuggestionsBox plugin, String title, String body, String author) {
+    public SuggestionData(SuggestionsBox plugin, String title, String body, String author, String tag) {
         this.title = title;
         this.body = body;
         this.author = author;
-        this.tag = "draft";
+        this.tag = tag;
         this.plugin = plugin;
     }
 
@@ -33,27 +27,5 @@ public class SuggestionData {
     }
     public void setBody(String body) {
         this.body = body;
-    }
-
-    public List<SuggestionData> getSuggestionsFromDatabase(String tag) {
-        List<SuggestionData> suggestions = new ArrayList<>();
-
-        try(PreparedStatement preparedStatement = plugin.getConnection().prepareStatement(
-                "SELECT * FROM suggestions WHERE tag = ?"
-        )) {
-            preparedStatement.setString(1, tag);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()) {
-                String title = resultSet.getString("title");
-                String body = resultSet.getString("body");
-                String author = resultSet.getString("author");
-                SuggestionData suggestionData = new SuggestionData(plugin, title, body, author);
-                suggestions.add(suggestionData);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return suggestions;
     }
 }
